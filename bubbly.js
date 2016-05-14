@@ -62,7 +62,7 @@ function Shape(x,y){
 
       stroke(1,0,1);
       strokeWeight(50);
-      fill(0,0,0.5);
+      fill(0,0,0,1);
       ellipse(0,0,this.radius, this.radius);
     pop();
   }
