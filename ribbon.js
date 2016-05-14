@@ -1,6 +1,6 @@
 var w=1500;
 var h=1500;
-var numLines = 20;
+var numLines = 10;
 var dx = (w)/numLines;
 var t = 0;
 var d = 0;
@@ -11,6 +11,9 @@ function setup(){
   colorMode(HSB,360,1,1);
   createCanvas(w,h);
   background(0,0,100);
+
+  rotate(1);
+  translate(-200,-2*h/3);
 }
 
 function draw(){
@@ -24,11 +27,12 @@ function draw(){
 }
 
 function wave(x, thick){
-  push();
-  translate(w/2,h/2);
   noFill();
-  strokeWeight(thick);
+  strokeWeight(25);
   stroke(0,0,1);
-  ellipse(0,0,x*2,x*2);
-  pop();
+  for(var i =25*(x/dx); i<2*w; i+=50){
+    var diff = 10*(i/200)+100*sin(radians(map(i,0,w,0,360)+20*frameCount));
+    line(1*i,x,i, x+diff);
+  }
+
 }
