@@ -31,7 +31,7 @@ function wave(x, thick){
   strokeWeight(25);
   stroke(0,0,1);
   for(var i =25*(x/dx); i<2*w; i+=50){
-    var diff = 10*(i/200)+100*sin(radians(map(i,0,w,0,360)+20*frameCount));
+    var diff = 10*(i/200)+100*sin(radians(map(i,0,w,0,360)+20*frameCount+50*(x/dx)));
     line(1*i,x,i, x+diff);
   }
 

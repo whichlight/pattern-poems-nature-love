@@ -17,13 +17,15 @@ var setup = function(){
   }
 
 
-  for(var i=0; i<w; i+=200){
-    for(var j=0; j<h; j+=200){
+  for(var i=-200; i<w+200; i+=200){
+    for(var j=-200; j<h+200; j+=200){
       var p = new Shape(i+50,j+50, random(360));
       pool.push(p);
     }
   }
 
+  translate(750,-350);
+  rotate(45);
 }
 
 var bw= 0;
@@ -79,21 +81,21 @@ function Shape(x,y, angle){
     translate(this.x, this.y);
     rotate(this.angle);
 
-    fill(1,0,0);
-    stroke(1,0,1);
-    strokeWeight(50);
+    for(var k=0; k<200; k+=50){
 
-    var sides = 4;
-    var an = 360/sides;
-    beginShape();
+        fill(1,0,0);
+        stroke(1,0,1);
+        strokeWeight(15);
 
-    for(var j=0; j<sides; j++){
-    vertex(i*cos(j*an), i*sin(j*an));
+        var sides = 5;
+        var an = 360/sides;
+        beginShape();
+        for(var j=0; j<sides; j++){
+            vertex((i-k)*cos(j*an), (i-k)*sin(j*an));
+        }
+        endShape(CLOSE);
+
     }
-
-    endShape(CLOSE);
-
-
     pop();
   }
 }

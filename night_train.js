@@ -16,7 +16,7 @@ function setup(){
 function draw(){
   background(0,0,100);
   for(var i=0; i<numLines; i++){
-   var thickness = T*(1+sin(radians(((t+i)*dx)/w)*360));
+   var thickness = 10+T*(1+sin(radians(((t+i)*dx)/w)*360));
    wave(dx*i, thickness);
   }
   t+=1;
@@ -25,6 +25,6 @@ function draw(){
 
 function wave(x, thick){
   strokeWeight(thick);
-  line(0,x,width,x);
+  line(x,0,x,width);
   stroke(0,0,0,100);
 }
