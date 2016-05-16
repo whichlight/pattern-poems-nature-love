@@ -43,6 +43,12 @@ var draw = function(){
     p.update();
     p.render();
   }
+
+
+    fill(0,0,1);
+    noStroke();
+    rectMode(CENTER);
+    rect(w/2,h/2,300,300);
 }
 
 var makeShape = function(x,y, angle,col){
@@ -58,14 +64,17 @@ mouseClicked = function(){
 function Shape(x,y, angle, col){
   this.x = x;
   this.y = y;
-  this.radius = 0;
+  this.radius = 50;
   this.thickness = 100;
   this.angle = angle;
   this.col = col;
+  this.shape = 4;
 
   this.update = function(){
-    this.radius+=20;
-    if(this.radius>1.5*w){
+    this.radius+=map(this.radius,0,w+100,30,0.01);
+
+
+    if(this.radius>(w+40)){
       var index = pool.indexOf(this);
       if (index > -1) {
         pool.splice(index, 1);
@@ -77,7 +86,7 @@ function Shape(x,y, angle, col){
     i=this.radius;
     push();
     translate(this.x, this.y);
-    rotate(this.angle);
+   // rotate(this.angle);
     if(this.col!=0){
 
     fill(1,1,0);
@@ -86,14 +95,22 @@ function Shape(x,y, angle, col){
     fill(1,0,1);
     }
     noStroke();
+
+    /*
     beginShape();
 
-
-    vertex(i*cos(120), i*sin(120));
-    vertex(i,0);
-    vertex(i*cos(240), i*sin(240));
+    var sides = this.shape;
+    var an = 360/sides;
+    beginShape();
+    rotate(45);
+    for(var j=0; j<sides; j++){
+        vertex((i)*cos(j*an), (i)*sin(j*an));
+    }
     endShape(CLOSE);
+    */
 
+    rectMode(CENTER);
+    rect(0,0,i,i);
 
     pop();
   }
