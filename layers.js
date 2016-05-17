@@ -104,13 +104,16 @@ function Shape(x,y, line){
     strokeWeight(20);
       fill(1,0,1);
     }
-    beginShape();
+   // beginShape();
       for(var i=0;i<this.linepoints.length; i+=1){
-        vertex(i*res,map(diff,-100,h,this.linepoints[i]/4,2*this.linepoints[i]));
+   //     vertex(i*res,map(diff,-100,h,this.linepoints[i]/4,2*this.linepoints[i]));
+        var rad = map(diff,0,h,20,100);
+        ellipse(i*res,map(diff,-10,h,0,2*this.linepoints[i]), rad,rad);
+
       }
-    vertex(w,h);
-    vertex(0,h);
-    endShape(CLOSE);
+   // vertex(w,h);
+   // vertex(0,h);
+    //endShape(CLOSE);
     pop();
   }
 }
