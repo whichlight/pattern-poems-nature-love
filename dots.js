@@ -93,7 +93,8 @@ function Shape(x,y, angle){
 
     fill(0,0,0);
     noStroke();
-    ellipse(diff,diff,i,i);
+    var offset = map(this.x-w/2,-w/2,w/2,-1*this.radius/4,this.radius/4);
+    ellipse(diff+offset,diff,i,i);
 
     pop();
   }

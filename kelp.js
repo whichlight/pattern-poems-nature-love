@@ -81,7 +81,7 @@ function Shape(x,y, angle){
     translate(this.x, this.y);
     fill(0,0,1);
     noStroke();
-    rect(0,i,this.radius+60,i);
+    rect(0,i,this.radius+50,i);
     pop();
   }
 }
