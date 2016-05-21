@@ -1,5 +1,6 @@
 var h = 1500;
 var w = 1500;
+var fcolor = 160;
 
 var pool = [];
 
@@ -31,8 +32,10 @@ var setup = function(){
 var bw= 0;
 var a = 0;
 var draw = function(){
+//    fcolor++;
+    fcolor%=360;
 
-  background(0,0,0);
+  background(280,1,1);
 
 
 
@@ -47,7 +50,7 @@ var draw = function(){
 
 mouseClicked = function(){
     var p = new Shape(mouseX, mouseY, random(360));
-    pool.push(p);
+    console.log(fcolor);
   }
 
 function Shape(x,y, angle){
@@ -83,8 +86,8 @@ function Shape(x,y, angle){
 
     for(var k=0; k<200; k+=50){
 
-        fill(1,0,0);
-        stroke(1,0,1);
+        fill(280,1,1);
+        stroke(fcolor,0.8,1);
         strokeWeight(15);
 
         var sides = 5;

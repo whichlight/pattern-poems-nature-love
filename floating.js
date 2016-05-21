@@ -22,8 +22,10 @@ var setup = function(){
 }
 
 var draw = function(){
+  bcol = color(200,1,1);
+  fcol = color(120,1,1);
 
-  background(0,0,0);
+  background(bcol);
 
 
 
@@ -67,8 +69,8 @@ function Shape(x,y, angle){
     rectMode(CENTER);
     translate(this.x, this.y);
     rotate(-1*frameCount*2);
-    fill(0,0,1);
-    stroke(0,0,1);
+    fill(fcol);
+    stroke(fcol);
     strokeWeight(20);
 
     i=this.radius;

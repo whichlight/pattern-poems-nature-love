@@ -80,10 +80,10 @@ function Shape(x,y, angle, col){
     rotate(this.angle);
     if(this.col!=0){
 
-    fill(1,1,0);
+    fill(160,1,0.8);
     }else{
 
-    fill(1,0,1);
+    fill(50,1,1);
     }
     noStroke();
     beginShape();

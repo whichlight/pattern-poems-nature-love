@@ -5,7 +5,7 @@ var pool = [];
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
-  frameRate(15);
+  frameRate(1);
   createCanvas(w,h);
 
   makeShape(0,h/2);
@@ -13,11 +13,15 @@ var setup = function(){
 }
 
 var draw = function(){
-  background(0,0,0);
+  background(10,1,1);
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
     p.update();
     p.render();
+  }
+
+  if(mouseIsPressed){
+    saveCanvas('twoism_out'+'_'+frameCount+'.png');
   }
 }
 
@@ -28,7 +32,7 @@ var makeShape = function(x,y){
 
 mouseClicked = function(){
     var p = new Shape(mouseX, mouseY);
-    pool.push(p);
+  //  pool.push(p);
   }
 
 function Shape(x,y){
@@ -47,7 +51,7 @@ function Shape(x,y){
 
     for(var i = this.radius; i>0; i-=200){
       if(i<3*w){
-      stroke(1,0,1);
+      stroke(280,1,1);
       strokeWeight(50);
  //     fill(0,0,1);
       noFill();

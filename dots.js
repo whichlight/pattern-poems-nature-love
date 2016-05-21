@@ -35,7 +35,10 @@ var a = 0;
 var draw = function(){
 
   //diff = h/2 - mouseY;
-  background(0,0,0);
+
+  bcol = color(164,1,1);
+  fcol = color(344,1,1);
+  background(bcol);
 
 
 
@@ -86,12 +89,12 @@ function Shape(x,y, angle){
     i=this.radius;
     push();
     translate(this.x, this.y);
-    fill(0,0,1);
+    fill(fcol);
     noStroke();
     strokeWeight(15);
     ellipse(0,0,i,i);
 
-    fill(0,0,0);
+    fill(bcol);
     noStroke();
     var offset = map(this.x-w/2,-w/2,w/2,-1*this.radius/4,this.radius/4);
     ellipse(diff+offset,diff,i,i);

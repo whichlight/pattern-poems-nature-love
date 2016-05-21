@@ -1,5 +1,8 @@
 var h = 1500;
 var w = 1500;
+var bcolor = 35;
+var bsat = 1;
+var fcolor = 180;
 
 var pool = [];
 
@@ -19,7 +22,9 @@ var setup = function(){
 }
 
 var draw = function(){
-  background(0,0,0);
+//  bcolor+=1;
+  bcolor%=360;
+  background(bcolor,1,bsat);
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
     p.update();
@@ -33,8 +38,9 @@ var makeShape = function(x,y){
 }
 
 mouseClicked = function(){
-    var p = new Shape(mouseX, mouseY);
-    pool.push(p);
+  //  var p = new Shape(mouseX, mouseY);
+ //   pool.push(p);
+ console.log(bcolor);
   }
 
 function Shape(x,y){
@@ -60,9 +66,9 @@ function Shape(x,y){
     push();
     translate(this.x, this.y);
 
-      stroke(1,0,1);
+      stroke(fcolor,1,1);
       strokeWeight(50);
-      fill(0,0,0,1);
+      fill(bcolor,1,bsat);
       ellipse(0,0,this.radius, this.radius);
     pop();
   }

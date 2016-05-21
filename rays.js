@@ -20,7 +20,9 @@ var setup = function(){
 }
 
 var draw = function(){
-  background(0,0,0);
+  fcol= color(5,1,1);
+  bcol = color(150,1,1);
+  background(bcol);
 
   push();
   rotate(-1*diff);
@@ -71,7 +73,7 @@ function Shape(x,y){
 
     push();
     rotate(this.y/50-20);
-    stroke(1,0,1);
+    stroke(fcol);
     strokeWeight(60);
     noFill();
     line(this.y,-500,this.y, w+500);

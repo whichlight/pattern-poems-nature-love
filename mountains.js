@@ -3,6 +3,7 @@ var w = 1500;
 
 var pool = [];
 
+var fval = 25;
 var setup = function(){
   colorMode(HSB, 360,1,1)
   frameRate(15);
@@ -18,7 +19,13 @@ var setup = function(){
 
 var deg=1;
 var draw = function(){
-  background(0,0,0);
+//  fval++;
+  fval%=360;
+
+  bcol = color(210,1,0.8);
+  fcol = color(fval,1,1);
+
+  background(bcol);
   push()
 
   rotate(-1*deg);
@@ -29,7 +36,7 @@ var draw = function(){
   }
   pop();
   deg+=0.5;
-  deg%=6;
+  deg%=11;
 }
 
 
@@ -71,7 +78,7 @@ function Shape(x,y){
     push();
     rotate(this.y/10);
     translate(0,this.y);
-    stroke(1,0,1);
+    stroke(fcol);
     strokeWeight(20);
     noFill();
     beginShape();

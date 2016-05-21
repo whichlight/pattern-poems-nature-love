@@ -35,7 +35,9 @@ var setup = function(){
 }
 
 var draw = function(){
-  background(0,0,0);
+    fcol = color(140,1,0.8);
+    bcol = color(30,1,1);
+  background(bcol);
 
 /*
   for(var i=0; i<w+50; i+=100){
@@ -94,15 +96,15 @@ function Shape(x,y, line){
     translate(0,h/3+vert);
 
     if(pool.indexOf(this)%2==1){
-      fill(1,0,0);
-    stroke(1,0,0);
+      fill(fcol);
+    stroke(fcol);
     strokeWeight(20);
     }
     else{
 
-    stroke(1,0,1);
+    stroke(bcol);
     strokeWeight(20);
-      fill(1,0,1);
+      fill(bcol);
     }
    // beginShape();
       for(var i=0;i<this.linepoints.length; i+=1){

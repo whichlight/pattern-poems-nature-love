@@ -22,7 +22,7 @@ var draw = function(){
   }
 
 
-  background(0,0,0);
+  background(270,1,0.85);
 
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
@@ -68,7 +68,7 @@ function Shape(x,y, angle){
     push();
     translate(this.x, this.y);
     noStroke();
-    fill(1,0,1);
+    fill(180,0.5,1);
     rectMode(CENTER);
     rotate(40);
     rect(0,0,this.radius, this.radius);

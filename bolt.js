@@ -15,8 +15,11 @@ var setup = function(){
   }
 }
 
+var bval = 340;
 var draw = function(){
-  background(0,0,0);
+  background(bval,1,1);
+ // bval +=1;
+  bval %=360;
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
     p.update();
@@ -27,7 +30,7 @@ var draw = function(){
 
 mouseClicked = function(){
     var p = new Shape(0, mouseY);
-    pool.push(p);
+    console.log(bval);
   }
 
 function Shape(x,y){
@@ -56,7 +59,7 @@ function Shape(x,y){
   this.render = function(){
     push();
     translate(0,this.y);
-    stroke(1,0,1);
+    stroke(60,1,1);
     strokeWeight(50);
     noFill();
     beginShape();

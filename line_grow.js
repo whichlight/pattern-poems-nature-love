@@ -9,7 +9,9 @@ var setup = function(){
   createCanvas(w,h);
   angleMode(DEGREES);
 
-  background(0,0,0);
+  bcol= color(10,1,1);
+  fcol= color(310,0.5,1);
+  background(bcol);
 }
 
 var draw = function(){
@@ -74,8 +76,8 @@ function Shape(x,y, angle){
   this.render = function(){
     push();
     translate(this.x, this.y);
-    stroke(1,0,1);
-    fill(1,0,0);
+    stroke(fcol);
+    fill(bcol);
     strokeWeight(20);
     rect(0,0,50,this.radius);
     pop();

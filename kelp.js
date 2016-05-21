@@ -30,8 +30,10 @@ var setup = function(){
 var bw= 0;
 var a = 0;
 var draw = function(){
+  bcol = color(320,1,1);
+  fcol = color(180,1,1);
 
-  background(0,0,0);
+  background(bcol);
 
 
 
@@ -79,7 +81,7 @@ function Shape(x,y, angle){
     i=this.radius*(1+cos(frameCount*10+((this.x-this.y)/5)+this.par));
     push();
     translate(this.x, this.y);
-    fill(0,0,1);
+    fill(fcol);
     noStroke();
     rect(0,i,this.radius+50,i);
     pop();

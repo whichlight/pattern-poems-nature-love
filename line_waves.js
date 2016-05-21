@@ -16,7 +16,7 @@ var setup = function(){
 }
 
 var draw = function(){
-  background(0,0,0);
+  background(210,1,1);
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
     p.update();
@@ -53,7 +53,7 @@ function Shape(x,y){
   this.render = function(){
     push();
     translate(0,this.y);
-    stroke(1,0,1);
+    stroke(150,1,1);
     strokeWeight(50);
     noFill();
     for(var i=0;i<this.linepoints.length-1; i++){

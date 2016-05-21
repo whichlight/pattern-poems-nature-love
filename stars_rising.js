@@ -22,7 +22,7 @@ var setup = function(){
 var draw = function(){
 
 
-  background(0,0,0);
+  background(30,1,1);
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
     p.update();
@@ -65,7 +65,7 @@ function Shape(x,y){
     rotate(rot);
 
     //rotate(5*sin(5*frameCount+10*(this.y/20)));
-    fill(1,0,1);
+    fill(60,1,1);
     noStroke();
 
     for(var i=0;i<this.linepoints.length; i++){

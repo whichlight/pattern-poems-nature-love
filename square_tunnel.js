@@ -3,11 +3,14 @@ var w = 1500;
 
 var pool = [];
 
+
 var setup = function(){
   colorMode(HSB, 360,1,1)
   frameRate(15);
   createCanvas(w,h);
   angleMode(DEGREES)
+  fcol = color(100,1,1);
+  bcol = color(330,1,1);
 
 
   /*
@@ -23,7 +26,7 @@ var a = 0;
 var draw = function(){
 
     a+=61;
-  background(0,0,0);
+  background(bcol);
 
   if(frameCount%5==0){
 
@@ -45,7 +48,7 @@ var draw = function(){
   }
 
 
-    fill(0,0,1);
+    fill(fcol);
     noStroke();
     rectMode(CENTER);
     rect(w/2,h/2,300,300);
@@ -89,10 +92,10 @@ function Shape(x,y, angle, col){
    // rotate(this.angle);
     if(this.col!=0){
 
-    fill(1,1,0);
+    fill(bcol);
     }else{
 
-    fill(1,0,1);
+    fill(fcol);
     }
     noStroke();
 

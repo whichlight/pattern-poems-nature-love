@@ -10,14 +10,13 @@ function setup(){
   frameRate(15);
   colorMode(HSB,360,1,1);
   createCanvas(w,h);
-  background(0,0,100);
 
   rotate(1);
   translate(-200,-2*h/3);
 }
 
 function draw(){
-  background(0,1,0);
+  background(0,1,0.7);
   for(var i=0; i<numLines; i++){
    var thickness = 15+ T*(1+sin(radians(((t+i)*dx)/w)*360));
    wave(dx*i, thickness);
@@ -29,7 +28,7 @@ function draw(){
 function wave(x, thick){
   noFill();
   strokeWeight(25);
-  stroke(0,0,1);
+  stroke(180,1,1);
   for(var i =25*(x/dx); i<2*w; i+=50){
     var diff = 10*(i/200)+100*sin(radians(map(i,0,w,0,360)+20*frameCount+50*(x/dx)));
     line(1*i,x,i, x+diff);

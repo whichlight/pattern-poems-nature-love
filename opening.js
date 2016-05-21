@@ -21,8 +21,9 @@ var setup = function(){
 var bw= 0;
 var a = 0;
 var draw = function(){
-
-  background(0,0,0);
+  bcol = color(340,1,0.8)
+  fcol = color(20,1,1)
+  background(bcol);
   var num = 5;
   for(var i=0; i<num; i++){
       var p = new Shape(w/2+random(-100,100),random(h), random(360));
@@ -69,7 +70,7 @@ function Shape(x,y, angle){
     i = this.radius;
     push();
     translate(this.x, this.y);
-    fill(0,0,1);
+    fill(fcol);
     noStroke();
     strokeWeight(15);
     ellipse(0,0,i,i);
