@@ -30,6 +30,10 @@ var draw = function(){
     p.update();
     p.render();
   }
+
+  if(mouseIsPressed){
+    saveCanvas('bubbly'+'_'+frameCount+'.png');
+  }
 }
 
 var makeShape = function(x,y){
@@ -40,25 +44,25 @@ var makeShape = function(x,y){
 mouseClicked = function(){
   //  var p = new Shape(mouseX, mouseY);
  //   pool.push(p);
- console.log(bcolor);
+// console.log(bcolor);
   }
 
 function Shape(x,y){
   this.x = x;
   this.y = y;
   var maxval = 200;
-  var minval = 50;
+  var minval = 60;
   this.direction = 1;
   if(random()<0.5){ this.direction=-1;}
   this.radius = random(minval,maxval);
 
   this.update = function(){
-    this.radius+=(this.direction*20);
 
     if(this.radius>maxval || this.radius<minval){
         this.direction*=-1;
     }
 
+    this.radius+=(this.direction*30);
 
   }
 

@@ -5,7 +5,7 @@ var pool = [];
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
-  frameRate(1);
+  frameRate(15);
   createCanvas(w,h);
 
   makeShape(0,h/2);

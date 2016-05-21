@@ -9,7 +9,7 @@ var bcolor = 230;
 var fcolor = 330;
 
 function setup(){
-  frameRate(15);
+  frameRate(5);
   colorMode(HSB,360,1,1);
   createCanvas(w,h);
   background(bcolor,1,1);
@@ -22,6 +22,16 @@ function draw(){
    wave(dx*i, thickness);
   }
   t+=1;
+
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('train'+'_'+paddy(frameCount,4)+'.png');
+  }
+
 
 }
 

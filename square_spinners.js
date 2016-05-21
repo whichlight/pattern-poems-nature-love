@@ -44,13 +44,22 @@ var draw = function(){
     p.update();
     p.render();
   }
+
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('spiners'+'_'+paddy(frameCount,4)+'.png');
+  }
 }
 
 
 
+
+
 mouseClicked = function(){
-    var p = new Shape(mouseX, mouseY, random(360));
-    console.log(fcolor);
   }
 
 function Shape(x,y, angle){
@@ -60,7 +69,7 @@ function Shape(x,y, angle){
   this.radius = 200;
   this.thickness = 100;
   this.angle = angle;
-  this.angle_speed=map(Math.abs(h/2-this.y),0,h/2,10,0);
+  this.angle_speed= 8;// 2*map(Math.abs(h/2-this.y),0,h/2,10,0);
   var maxval= this.radius*2 ;
   var minval = this.radius*0.8;
   this.direction = -1;
@@ -102,3 +111,5 @@ function Shape(x,y, angle){
     pop();
   }
 }
+
+
