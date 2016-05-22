@@ -10,7 +10,7 @@ var setup = function(){
   createCanvas(w,h);
   angleMode(DEGREES);
 
- for(var i=-150; i<h+300; i+=20){
+ for(var i=-500; i<h+2100; i+=50){
   var p = new Shape(0, i);
   pool.push(p);
   }
@@ -35,14 +35,22 @@ var draw = function(){
     p.render();
   }
   pop();
-  deg+=0.5;
-  deg%=11;
+  deg+=1;
+  deg%=10;
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('mtns'+paddy(frameCount,4)+'.png');
+  }
+
+
 }
 
 
 mouseClicked = function(){
-    var p = new Shape(0, mouseY);
-    pool.push(p);
   }
 
 function Shape(x,y){
@@ -51,10 +59,10 @@ function Shape(x,y){
   this.radius = 40;
   this.linepoints = [];
   this.res = 100;
-  this.max =100;
+  this.max =50;
   this.start = frameCount;
   this.direction = -1;
-  var val = 0;
+  var val = this.max;
 
 
   for(var i=0; i<w+800; i+=2*this.res){
@@ -64,8 +72,8 @@ function Shape(x,y){
 
   this.update = function(){
 
-    for(var i=1;i<this.linepoints.length; i+=3){
-        this.linepoints[i]+=(this.direction*5);
+    for(var i=1;i<this.linepoints.length; i+=2){
+      //  this.linepoints[i]+=(this.direction*5);
     }
     if(this.linepoints[1]<-1*this.max){
       for(var i=0;i<this.linepoints.length; i++){
@@ -76,10 +84,11 @@ function Shape(x,y){
 
   this.render = function(){
     push();
-    rotate(this.y/10);
-    translate(0,this.y);
+    translate(w/2,0);
+   rotate(this.y/20);
+   // translate(0,this.y);
     stroke(fcol);
-    strokeWeight(20);
+    strokeWeight(15);
     noFill();
     beginShape();
     for(var i=0;i<this.linepoints.length-1; i++){

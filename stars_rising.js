@@ -7,7 +7,7 @@ var rot = 10;
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
-  frameRate(15);
+  frameRate(15a);
   createCanvas(w,h);
   angleMode(DEGREES);
 
@@ -28,12 +28,19 @@ var draw = function(){
     p.update();
     p.render();
   }
+
+ function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('stars_'+paddy(frameCount,4)+'.png');
+  }
 }
 
 
 mouseClicked = function(){
-    var p = new Shape(0, mouseY);
-    pool.push(p);
   }
 
 function Shape(x,y){
@@ -59,7 +66,7 @@ function Shape(x,y){
   this.render = function(){
     push();
     //translate(0,-100*sin(5*frameCount+(this.y)/10));
-    translate(0,(-5*frameCount+(this.y)));
+    translate(0,(-10*1.5+(this.y)));
     translate(-20,this.y-1500);
 
     rotate(rot);
@@ -71,7 +78,7 @@ function Shape(x,y){
     for(var i=0;i<this.linepoints.length; i++){
 
         translate(0,10*i);
-        this.radius = 20+50*(1+sin(frameCount*5+50*i*this.y/10));
+        this.radius = 20+50*(1+sin(8*frameCount*5+50*i*this.y/10));
         ellipse(this.res*i,this.y,this.radius, this.radius);
     }
     pop();

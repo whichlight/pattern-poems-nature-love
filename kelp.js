@@ -6,7 +6,7 @@ var pool = [];
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
-  frameRate(15);
+  frameRate(5);
   createCanvas(w,h);
   angleMode(DEGREES);
 
@@ -43,13 +43,22 @@ var draw = function(){
     p.render();
   }
 
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('kelp_'+paddy(frameCount,4)+'.png');
+  }
+
+
+
 }
 
 
 
 mouseClicked = function(){
-    var p = new Shape(mouseX, mouseY, random(360));
-    //pool.push(p);
   }
 
 function Shape(x,y, angle){
@@ -78,7 +87,7 @@ function Shape(x,y, angle){
   }
 
   this.render = function(){
-    i=this.radius*(1+cos(frameCount*10+((this.x-this.y)/5)+this.par));
+    i=this.radius*(1+cos(frameCount*20+((this.x-this.y)/5)+this.par));
     push();
     translate(this.x, this.y);
     fill(fcol);

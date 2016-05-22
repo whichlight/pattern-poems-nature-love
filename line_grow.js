@@ -1,11 +1,12 @@
 var h = 1500;
 var w = 1500;
+var rw = 50;
 
 var pool = [];
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
-  frameRate(15);
+  frameRate(10);
   createCanvas(w,h);
   angleMode(DEGREES);
 
@@ -16,11 +17,12 @@ var setup = function(){
 
 var draw = function(){
 
-  var num = 1;
-  for(var i=0; i<num; i++){
-    var p = new Shape(-20+random(w+40),-40+random(20), random(360));
-    pool.push(p);
-  }
+    var num = 2;
+
+    for(var i=0; i<num; i++){
+      var p = new Shape(-20+random(w+40));
+      pool.push(p);
+    }
 
 
 
@@ -34,52 +36,58 @@ var draw = function(){
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
     if (p.rem){
-      var index = pool.indexOf(p);
-      if (index > -1) {
-        pool.splice(index, 1);
-      }
+
     }
   }
 
   */
+
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('bamboo_'+paddy(frameCount,4)+'.png');
+  }
 }
 
 
 
 mouseClicked = function(){
-    var p = new Shape(mouseX, mouseY, random(360));
-    pool.push(p);
   }
 
-function Shape(x,y, angle){
+function Shape(x){
   this.x = x;
-  this.y = y;
-  this.angle = angle;
   this.rem = false;
-  this.speed = 10+random(20);
+  this.speed = 20+random(20);
 
   this.radius = 0;
 
   this.update = function(){
 
-    if(!this.rem){
     this.radius+=this.speed;
-    }
 
 
 
     if(this.radius>h+50){
-        this.rem=true;
+      /*
+        var index = pool.indexOf(this);
+        if (index > -1) {
+            pool.splice(index, 1);
+        }
+
+        */
     }
   }
 
   this.render = function(){
     push();
-    translate(this.x, this.y);
+    translate(this.x, 0);
     stroke(fcol);
     fill(bcol);
     strokeWeight(20);
-    rect(0,0,50,this.radius);
+    rect(0,0,rw,this.radius);
     pop();
   }
 }

@@ -3,7 +3,7 @@ var w = 1500;
 
 var pool = [];
 
-var diff = -105;
+var diff = -100;
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
@@ -49,15 +49,23 @@ var draw = function(){
   }
 
   diff +=10;
-  if(diff > 195){ diff = -105;}
+  if(diff > 5){ diff = -100;}
+
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('dots'+paddy(frameCount,4)+'.png');
+  }
+
+
 }
 
 
 
 mouseClicked = function(){
-    var p = new Shape(mouseX, mouseY, random(360));
-    //pool.push(p);
-    console.log(diff);
   }
 
 function Shape(x,y, angle){
@@ -71,6 +79,7 @@ function Shape(x,y, angle){
   var maxval= this.radius*2 ;
   var minval = this.radius*0.8;
   this.direction = -1;
+  this.xoff = random(300);
   if(random()<0.5){this.direction=1}
 
   this.update = function(){
@@ -92,12 +101,12 @@ function Shape(x,y, angle){
     fill(fcol);
     noStroke();
     strokeWeight(15);
-    ellipse(0,0,i,i);
+    ellipse(-1*diff,-1*diff,i,i);
 
     fill(bcol);
     noStroke();
     var offset = map(this.x-w/2,-w/2,w/2,-1*this.radius/4,this.radius/4);
-    ellipse(diff+offset,diff,i,i);
+    ellipse(diff,diff,i,i);
 
     pop();
   }

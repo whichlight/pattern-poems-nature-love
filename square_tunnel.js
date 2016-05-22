@@ -52,6 +52,15 @@ var draw = function(){
     noStroke();
     rectMode(CENTER);
     rect(w/2,h/2,300,300);
+
+ function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('tunnel'+paddy(frameCount,4)+'.png');
+  }
 }
 
 var makeShape = function(x,y, angle,col){
@@ -60,8 +69,6 @@ var makeShape = function(x,y, angle,col){
 }
 
 mouseClicked = function(){
-    var p = new Shape(mouseX, mouseY);
-    pool.push(p);
   }
 
 function Shape(x,y, angle, col){

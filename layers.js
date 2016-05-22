@@ -32,6 +32,7 @@ var setup = function(){
 
   }
 
+
 }
 
 var draw = function(){
@@ -57,7 +58,7 @@ var draw = function(){
 
   var rend = floor(map(diff,0,h,15,pool.length-2));
 
-  if(rend<=10){rend=10;}
+  if(rend<=6){rend=6;}
   if(rend>=pool.length){render = pool.length-1;}
 
   for(var i=rend-1;i>=0; i--){
@@ -65,14 +66,23 @@ var draw = function(){
     p.render();
   }
 
-  diff=h/2+h/2*sin(frameCount*5);
+ // diff=h/2+h/2*sin(frameCount*10);
+
+  diff+=150;
+  diff%=h;
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('layers_'+paddy(frameCount,4)+'.png');
+  }
 }
 
 
 
 mouseClicked = function(){
-    var p = new Shape(mouseX, mouseY, random(360));
-    //pool.push(p);
   }
 
 function Shape(x,y, line){
@@ -109,7 +119,7 @@ function Shape(x,y, line){
    // beginShape();
       for(var i=0;i<this.linepoints.length; i+=1){
    //     vertex(i*res,map(diff,-100,h,this.linepoints[i]/4,2*this.linepoints[i]));
-        var rad = map(diff,0,h,20,100);
+        var rad = map(diff,0,h,20,150);
         ellipse(i*res,map(diff,-10,h,0,2*this.linepoints[i]), rad,rad);
 
       }

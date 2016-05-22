@@ -3,7 +3,7 @@ var w = 1500;
 
 var pool = [];
 
-var maxdiff = 6;
+var maxdiff = 10;
 var diff =maxdiff;
 
 
@@ -34,7 +34,7 @@ var draw = function(){
   pop();
 
   push();
-  rotate(diff);
+  rotate(2+diff);
   for(var i=0;i<pool.length; i++){
     var p = pool[i];
     p.update();
@@ -42,8 +42,19 @@ var draw = function(){
   }
   pop();
 
-  diff-=0.5;
+  diff-=1;
   if(diff<0){diff=maxdiff}
+
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('ribbon'+paddy(frameCount,4)+'.png');
+  }
+
+
 }
 
 

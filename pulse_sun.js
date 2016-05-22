@@ -22,6 +22,16 @@ function draw(){
   }
   t+=1;
 
+
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('sun_'+paddy(frameCount,4)+'.png');
+  }
+
 }
 
 function wave(x, thick){

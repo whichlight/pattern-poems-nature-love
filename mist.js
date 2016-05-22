@@ -5,7 +5,7 @@ var pool = [];
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
-  frameRate(15);
+  frameRate(10);
   createCanvas(w,h);
   angleMode(DEGREES);
 
@@ -13,12 +13,14 @@ var setup = function(){
 
 var draw = function(){
 
-  var num = 10;
+  if(pool.length<180){
+  var num = 1;
   for(var i=0; i<num; i++){
     var a = random(360);
     var r = random(500);
     var p = new Shape(w/2+ r *cos(a),h/2+ r*sin(a), random(360));
     pool.push(p);
+  }
   }
 
 
@@ -28,6 +30,15 @@ var draw = function(){
     var p = pool[i];
     p.update();
     p.render();
+  }
+
+  function paddy(n, p, c) {
+    var pad_char = typeof c !== 'undefined' ? c : '0';
+    var pad = new Array(1 + p).join(pad_char);
+    return (pad + n).slice(-pad.length);
+  }
+  if(mouseIsPressed){
+    saveCanvas('mist'+paddy(frameCount,4)+'.png');
   }
 }
 
@@ -50,15 +61,18 @@ function Shape(x,y, angle){
 
   this.update = function(){
 
-    this.radius-=5;
+    this.radius-=8;
 
 
 
     if(this.radius<20){
+        this.radius = 100
+        /*
         var index = pool.indexOf(this);
         if (index > -1) {
             pool.splice(index, 1);
         }
+        */
 
     }
   }

@@ -9,7 +9,7 @@ var bcolor = 230;
 var fcolor = 330;
 
 function setup(){
-  frameRate(5);
+  frameRate(15);
   colorMode(HSB,360,1,1);
   createCanvas(w,h);
   background(bcolor,1,1);
