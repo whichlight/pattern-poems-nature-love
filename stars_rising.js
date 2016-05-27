@@ -7,7 +7,7 @@ var rot = 10;
 
 var setup = function(){
   colorMode(HSB, 360,1,1)
-  frameRate(15a);
+  frameRate(15);
   createCanvas(w,h);
   angleMode(DEGREES);
 
@@ -78,7 +78,7 @@ function Shape(x,y){
     for(var i=0;i<this.linepoints.length; i++){
 
         translate(0,10*i);
-        this.radius = 20+50*(1+sin(8*frameCount*5+50*i*this.y/10));
+        this.radius = 20+50*(1+sin(2*frameCount*5+50*i*this.y/10));
         ellipse(this.res*i,this.y,this.radius, this.radius);
     }
     pop();
